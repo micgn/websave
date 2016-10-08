@@ -13,24 +13,20 @@
 
 <form:form action="${userActionUrl}" modelAttribute="entryForm" method="post">
     <table>
-        <spring:bind path="entryName">
-            <tr>
-                <td>Name</td>
-                <td>
-                    <form:input path="entryName" size="40"/>
-                    <form:errors path="entryName" cssClass="errors"/>
-                </td>
-            </tr>
-        </spring:bind>
-        <spring:bind path="entryName">
-            <tr>
-                <td>Entry</td>
-                <td>
-                    <form:textarea path="entry" rows="10" cols="50"/>
-                    <form:errors path="entry" cssClass="errors"/>
-                </td>
-            </tr>
-        </spring:bind>
+        <tr>
+            <td>Name</td>
+            <td>
+                <form:input path="entryName" size="40"/>
+                <form:errors path="entryName" cssClass="errors"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Entry</td>
+            <td>
+                <form:textarea path="entry" rows="10" cols="50"/>
+                <form:errors path="entry" cssClass="errors"/>
+            </td>
+        </tr>
     </table>
     <input type="submit" value="Add"/>
 </form:form>
