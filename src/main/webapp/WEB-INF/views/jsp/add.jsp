@@ -16,8 +16,8 @@
         <tr>
             <td>Name</td>
             <td>
-                <form:input path="entryName" size="40"/>
-                <form:errors path="entryName" cssClass="errors"/>
+                <form:input path="name" size="40"/>
+                <form:errors path="name" cssClass="errors"/>
             </td>
         </tr>
         <tr>

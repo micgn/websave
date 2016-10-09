@@ -14,7 +14,7 @@
 </p>
 
 <ul>
-	<c:forEach items="${model.entries}" var="entry">
+	<c:forEach items="${list.entries}" var="entry">
 		<li>
 			<a href="show?e=<c:out value="${entry.nameEncoded}" />"><c:out value="${entry.name}" /></a>
 			<a href="edit?e=<c:out value="${entry.nameEncoded}" />">(edit)</a>

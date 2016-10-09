@@ -4,6 +4,7 @@ import de.mg.websave.service.WebsaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import save.service.PasswordModel;
 
@@ -23,14 +24,9 @@ public class LoginValidator implements Validator {
     public void validate(Object obj, Errors errors) {
 
         LoginTO command = (LoginTO) obj;
-        if (command == null) {
-            errors.reject("error.CommandNull", null, "Command object is 'null'.");
-            return;
-        }
-        if (command.getPw() == null || command.getPw().trim().length() == 0) {
-            errors.rejectValue("pw", "error.ValueEmpty", null, "must be filled");
-            return;
-        }
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pw", "error.ValueEmpty", "must be filled");
+
         PasswordModel passwordModel = service.getPasswordModel();
         if (!passwordModel.isCorrectPassword(command.getPw())) {
             errors.rejectValue("pw", "error.InvalidLogin", null, "login invalid");

@@ -1,11 +1,13 @@
 package save.service;
 
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class EntryModel implements Comparable<EntryModel> {
 
     private String name;
+
     private String entry;
 
     public String getName() {

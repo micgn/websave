@@ -1,0 +1,5 @@
+add front picture configurable / not on github!
+copyright header
+encrypt password in session
+set seesion timeout short
+redirect to login in case of session timeout
