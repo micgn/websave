@@ -121,7 +121,7 @@ public class WebsaveService {
         }
     }
 
-    public void copyAway(String filename) {
+    private void copyAway(String filename) {
 
         if ((new File(dataPath, filename)).exists()) {
             try {

@@ -1,6 +1,6 @@
 package de.mg.websave.web;
 
-import de.mg.websave.service.WebsaveService;
+import de.mg.websave.service.WebSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -13,7 +13,7 @@ import save.service.PasswordModel;
 public class LoginValidator implements Validator {
 
     @Autowired
-    private WebsaveService service;
+    private WebSession session;
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -27,7 +27,7 @@ public class LoginValidator implements Validator {
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pw", "error.ValueEmpty", "must be filled");
 
-        PasswordModel passwordModel = service.getPasswordModel();
+        PasswordModel passwordModel = session.getPasswordModel();
         if (!passwordModel.isCorrectPassword(command.getPw())) {
             errors.rejectValue("pw", "error.InvalidLogin", null, "login invalid");
         }

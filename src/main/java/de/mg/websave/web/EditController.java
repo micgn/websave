@@ -1,5 +1,6 @@
 package de.mg.websave.web;
 
+import de.mg.websave.service.WebSession;
 import de.mg.websave.service.WebsaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

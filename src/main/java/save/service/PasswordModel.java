@@ -5,7 +5,11 @@ import de.mg.websave.util.MD5StringEncrypter;
 
 public class PasswordModel {
 
+    /**
+     * hashed password
+     */
     private String passwordEncrypted;
+
     private String hint;
 
     public boolean isCorrectPassword(String password) {

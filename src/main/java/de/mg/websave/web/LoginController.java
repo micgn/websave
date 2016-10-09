@@ -1,5 +1,6 @@
 package de.mg.websave.web;
 
+import de.mg.websave.service.WebSession;
 import de.mg.websave.service.WebsaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import save.service.DataModel;
+import save.service.PasswordModel;
 
 @Controller
 @Scope("request")
@@ -39,6 +41,9 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
+
+        loadPasswordModelIntoSession();
+
         model.addAttribute("loginForm", new LoginTO());
         return "login";
     }
@@ -48,14 +53,21 @@ public class LoginController {
     public String login(@ModelAttribute("loginForm") @Validated LoginTO loginTO,
                         BindingResult result) {
 
-
         if (result.hasErrors()) {
-            loginTO.setHint(service.getPasswordModel().getHint());
+            loginTO.setHint(session.getPasswordModel().getHint());
             return "login";
         } else {
+            session.setLoginPassword(loginTO.getPw());
             DataModel dataModel = service.getDataModel(loginTO.getPw());
             session.setDataModel(dataModel);
             return "redirect:/list";
+        }
+    }
+
+    private void loadPasswordModelIntoSession() {
+        if (session.getPasswordModel() == null) {
+            PasswordModel passwordModel = service.getPasswordModel();
+            session.setPasswordModel(passwordModel);
         }
     }
 }
