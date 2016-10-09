@@ -1,4 +1,4 @@
-package de.mg.websave.model;
+package save.service;
 
 import java.util.List;
 

@@ -3,7 +3,6 @@ package de.mg.websave;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -13,8 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @Configuration
 // TODO
-@ComponentScan({ "com.mkyong.form.web", "com.mkyong.form.service", "com.mkyong.form.dao",
-		"com.mkyong.form.exception", "com.mkyong.form.validator" })
+@ComponentScan({ "de.mg.websave.web", "de.mg.websave.service" })
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
 	@Override

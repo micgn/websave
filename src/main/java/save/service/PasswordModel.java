@@ -1,4 +1,4 @@
-package de.mg.websave.model;
+package save.service;
 
 
 import de.mg.websave.util.MD5StringEncrypter;

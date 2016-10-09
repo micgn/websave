@@ -1,4 +1,4 @@
-package de.mg.websave.model;
+package save.service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -12,6 +12,10 @@ public class EntryModel implements Comparable<EntryModel> {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getNameEncoded() {
         try {
             return URLEncoder.encode(name, "UTF-8");
@@ -20,20 +24,16 @@ public class EntryModel implements Comparable<EntryModel> {
         }
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEntry() {
         return entry;
     }
 
-    public String getEntryHtml() {
-        return entry.replaceAll("\n", "<br/>");
-    }
-
     public void setEntry(String entry) {
         this.entry = entry;
+    }
+
+    public String getEntryHtml() {
+        return entry.replaceAll("\n", "<br/>");
     }
 
     public int compareTo(EntryModel m) {

@@ -13,7 +13,7 @@
 	<form:password path="pw"/><br/>
 	<form:errors path="pw" cssClass="errors" />
 	<input type="submit" value="OK"/><br/>
-	Hint: <c:out value="${LoginCommand.hint}"/>
+	Hint: ${loginForm.hint}
 </form:form>
 
 <jsp:include page="fragments/footer.jsp" />

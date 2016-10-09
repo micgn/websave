@@ -3,10 +3,10 @@ package de.mg.websave.service;
 import com.thoughtworks.xstream.XStream;
 import de.mg.lateo.LateoMain;
 import de.mg.websave.Env;
-import de.mg.websave.model.DataModel;
-import de.mg.websave.model.PasswordModel;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
+import save.service.DataModel;
+import save.service.PasswordModel;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -35,7 +35,7 @@ public class SaveService {
 
     private String dataPath;
 
-    public DataModel getData(String password) {
+    public DataModel getDataModel(String password) {
 
         File file = new File(dataPath, DATA_FILE);
         if (!file.exists()) {
@@ -66,7 +66,7 @@ public class SaveService {
         }
     }
 
-    public PasswordModel getPassword() {
+    public PasswordModel getPasswordModel() {
 
         File file = new File(dataPath, PW_FILE);
         if (!file.exists()) {
