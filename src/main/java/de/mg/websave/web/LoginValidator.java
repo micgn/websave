@@ -1,6 +1,6 @@
 package de.mg.websave.web;
 
-import de.mg.websave.service.SaveService;
+import de.mg.websave.service.WebsaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -12,7 +12,7 @@ import save.service.PasswordModel;
 public class LoginValidator implements Validator {
 
     @Autowired
-    private SaveService service;
+    private WebsaveService service;
 
     @Override
     public boolean supports(Class<?> clazz) {

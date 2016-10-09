@@ -2,7 +2,7 @@ package de.mg.websave.service;
 
 import com.thoughtworks.xstream.XStream;
 import de.mg.lateo.LateoMain;
-import de.mg.websave.Env;
+import de.mg.websave.config.WebsaveConfig;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 import save.service.DataModel;
@@ -23,7 +23,7 @@ import java.util.Date;
 
 
 @Service
-public class SaveService {
+public class WebsaveService {
 
     private static final String DEFAULT_PW = "123";
 
@@ -148,7 +148,7 @@ public class SaveService {
     public void init() throws Exception {
         xstream = new XStream();
         lateo = LateoMain.getInstance();
-        dataPath = new Env().getDatafilePath();
+        dataPath = new WebsaveConfig().getDatafilePath();
     }
 
 }

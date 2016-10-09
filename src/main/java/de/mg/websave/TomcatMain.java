@@ -1,24 +1,25 @@
 package de.mg.websave;
 
+import de.mg.websave.config.WebsaveConfig;
 import org.apache.catalina.Service;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 
 import java.io.File;
 
-public class Main {
+public class TomcatMain {
 
     public static void main(String[] args) throws Exception {
 
-        Env env = new Env();
+        WebsaveConfig websaveConfig = new WebsaveConfig();
 
         Connector httpsConnector = new Connector();
-        httpsConnector.setPort(Integer.valueOf(env.getSecurePort()));
+        httpsConnector.setPort(Integer.valueOf(websaveConfig.getSecurePort()));
         httpsConnector.setSecure(true);
         httpsConnector.setScheme("https");
-        httpsConnector.setAttribute("keyAlias", env.getKeystoreAlias());
-        httpsConnector.setAttribute("keystorePass", env.getKeystorePassword());
-        httpsConnector.setAttribute("keystoreFile", env.getKeystorePath());
+        httpsConnector.setAttribute("keyAlias", websaveConfig.getKeystoreAlias());
+        httpsConnector.setAttribute("keystorePass", websaveConfig.getKeystorePassword());
+        httpsConnector.setAttribute("keystoreFile", websaveConfig.getKeystorePath());
         httpsConnector.setAttribute("clientAuth", "false");
         httpsConnector.setAttribute("sslProtocol", "TLS");
         httpsConnector.setAttribute("SSLEnabled", true);
@@ -29,11 +30,11 @@ public class Main {
         service.addConnector(httpsConnector);
 
         Connector defaultConnector = tomcat.getConnector();
-        defaultConnector.setPort(Integer.valueOf(env.getPort()));
-        defaultConnector.setRedirectPort(Integer.valueOf(env.getSecurePort()));
+        defaultConnector.setPort(Integer.valueOf(websaveConfig.getPort()));
+        defaultConnector.setRedirectPort(Integer.valueOf(websaveConfig.getSecurePort()));
 
         tomcat.addRole("save", "save");
-        tomcat.addUser("save", env.getBasicAuthPassword());
+        tomcat.addUser("save", websaveConfig.getBasicAuthPassword());
 
         final String webappDirLocation = "src/main/webapp/";
         tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());

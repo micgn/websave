@@ -32,7 +32,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.mg.websave.Main</mainClass>
+                            <mainClass>de.mg.websave.TomcatMain</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

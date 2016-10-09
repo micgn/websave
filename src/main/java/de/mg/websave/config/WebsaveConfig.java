@@ -1,9 +1,9 @@
-package de.mg.websave;
+package de.mg.websave.config;
 
 
 import java.lang.reflect.Field;
 
-public class Env {
+public class WebsaveConfig {
 
     private String basicAuthPassword = "12345";
     private String port = "8888", securePort = "8443";
@@ -11,9 +11,9 @@ public class Env {
     private String datafilePath = "/home/mgnatz/git/save";
 
 
-    public Env() {
+    public WebsaveConfig() {
 
-        for (Field field : Env.class.getDeclaredFields()) {
+        for (Field field : WebsaveConfig.class.getDeclaredFields()) {
             String value = System.getProperty(field.getName());
             try {
                 if (value != null)
@@ -27,7 +27,7 @@ public class Env {
 
     @Override
     public String toString() {
-        return "Env{" +
+        return "WebsaveConfig{" +
                 "basicAuthPassword='" + basicAuthPassword + '\'' +
                 ", port='" + port + '\'' +
                 ", securePort='" + securePort + '\'' +

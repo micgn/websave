@@ -1,7 +1,8 @@
 package de.mg.websave.web;
 
-import de.mg.websave.service.SaveService;
+import de.mg.websave.service.WebsaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,15 +12,20 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import save.service.DataModel;
 
 @Controller
+@Scope("request")
 public class LoginController {
 
     @Autowired
     private LoginValidator loginValidator;
 
     @Autowired
-    private SaveService service;
+    private WebsaveService service;
+
+    @Autowired
+    private WebSession session;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -47,6 +53,8 @@ public class LoginController {
             loginTO.setHint(service.getPasswordModel().getHint());
             return "login";
         } else {
+            DataModel dataModel = service.getDataModel(loginTO.getPw());
+            session.setDataModel(dataModel);
             return "redirect:/list";
         }
     }

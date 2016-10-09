@@ -1,4 +1,4 @@
-package de.mg.websave;
+package de.mg.websave.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,6 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-// TODO
 @ComponentScan({ "de.mg.websave.web", "de.mg.websave.service" })
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
@@ -28,12 +27,5 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
-
-/*	@Bean
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
-		rb.setBasenames(new String[] { "messages/messages", "messages/validation" });
-		return rb;
-	}*/
 
 }
