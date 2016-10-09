@@ -16,9 +16,13 @@
 <ul>
 	<c:forEach items="${list.entries}" var="entry">
 		<li>
-			<a href="show?e=<c:out value="${entry.nameEncoded}" />"><c:out value="${entry.name}" /></a>
-			<a href="edit?e=<c:out value="${entry.nameEncoded}" />">(edit)</a>
-			<a href="delete?e=<c:out value="${entry.nameEncoded}" />">(delete)</a>
+			<spring:url value="/show/${entry.name}" var="showActionUrl"/>
+			<spring:url value="/edit/${entry.name}" var="editActionUrl"/>
+			<spring:url value="/delete/${entry.name}" var="deleteActionUrl"/>
+
+			<a href="${showActionUrl}"><c:out value="${entry.name}"/></a>
+			<a href="${editActionUrl}">(edit)</a>
+			<a href="${deleteActionUrl}">(delete)</a>
 		</li>
 	</c:forEach>
 </ul>

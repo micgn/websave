@@ -9,9 +9,8 @@
 
 <jsp:include page="fragments/menu.jsp"/>
 
-<spring:url value="/edit" var="userActionUrl"/>
-
-<form:form action="${userActionUrl}" modelAttribute="entryForm" method="post">
+<form:form action="/edit" modelAttribute="editForm" method="post">
+    <form:hidden path="oldEntryName" value="${oldEntryName}"/>
 	<table>
 		<tr>
 			<td>Name</td>
@@ -32,7 +31,8 @@
 </form:form>
 
 <p>
-	<a href="delete?e=<c:out value="${model.nameEncoded}" />">(delete)</a>
+    <spring:url value="/delete/${model.name}" var="deleteActionUrl"/>
+    <a href="${deleteActionUrl}">(delete)</a>
 </p>
 
 <jsp:include page="fragments/footer.jsp" />

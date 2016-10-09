@@ -11,7 +11,7 @@
 
 <spring:url value="/changePw" var="userActionUrl"/>
 
-<form:form action="${userActionUrl}" modelAttribute="pwForm" method="post">
+<form:form action="${userActionUrl}" modelAttribute="changePwForm" method="post">
 	<table>
 		<tr>
 			<td>old password:</td>

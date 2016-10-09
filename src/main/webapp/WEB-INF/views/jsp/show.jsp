@@ -8,17 +8,19 @@
 
 <jsp:include page="fragments/menu.jsp"/>
 
-<h1><c:out value="${model.name}" /></h1>
+<h1><c:out value="${entryModel.name}"/></h1>
 <table>
 	<tr>
 		<td>Entry:</td>
-		<td><c:out value="${model.entryHtml}" escapeXml="false" /></td>
+		<td><c:out value="${entryModel.entryHtml}" escapeXml="false"/></td>
 	</tr>
 </table>
 
 <p>
-	<a href="edit?e=<c:out value="${model.nameEncoded}" />">(edit)</a>
-	<a href="delete?e=<c:out value="${model.nameEncoded}" />">(delete)</a>
+	<spring:url value="/edit/${entryModel.name}" var="editActionUrl"/>
+	<spring:url value="/delete/${entryModel.name}" var="deleteActionUrl"/>
+	<a href="${editActionUrl}">(edit)</a>
+	<a href="${deleteActionUrl}">(delete)</a>
 </p>
 
 
