@@ -20,7 +20,7 @@
 			<spring:url value="/edit/${entry.name}" var="editActionUrl"/>
 			<spring:url value="/delete/${entry.name}" var="deleteActionUrl"/>
 
-			<a href="${showActionUrl}"><c:out value="${entry.name}"/></a>
+			<a href="${showActionUrl}"><span class="entry"><c:out value="${entry.name}"/></span></a>
 			<a href="${editActionUrl}">(edit)</a>
 			<a href="${deleteActionUrl}">(delete)</a>
 		</li>

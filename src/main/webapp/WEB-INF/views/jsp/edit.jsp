@@ -15,7 +15,7 @@
 		<tr>
 			<td>Name</td>
 			<td>
-				<form:input path="entryName" size="40" />
+                <form:input path="entryName" size="50"/>
 				<form:errors path="entryName" cssClass="errors" />
 			</td>
 		</tr>
@@ -27,12 +27,13 @@
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="Change" />
+
+    <p>
+        <input type="submit" value="Change"/>
+        <spring:url value="/delete/${model.name}" var="deleteActionUrl"/>
+        <a href="${deleteActionUrl}">(delete)</a>
+    </p>
 </form:form>
 
-<p>
-    <spring:url value="/delete/${model.name}" var="deleteActionUrl"/>
-    <a href="${deleteActionUrl}">(delete)</a>
-</p>
 
 <jsp:include page="fragments/footer.jsp" />

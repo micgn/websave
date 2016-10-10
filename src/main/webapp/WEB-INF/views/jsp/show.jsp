@@ -8,11 +8,11 @@
 
 <jsp:include page="fragments/menu.jsp"/>
 
-<h1><c:out value="${entryModel.name}"/></h1>
+<h1 class="entry"><c:out value="${entryModel.name}"/></h1>
 <table>
 	<tr>
 		<td>Entry:</td>
-		<td><c:out value="${entryModel.entryHtml}" escapeXml="false"/></td>
+		<td class="entry"><c:out value="${entryModel.entryHtml}" escapeXml="false"/></td>
 	</tr>
 </table>
 
