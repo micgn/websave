@@ -2,7 +2,7 @@
 
 <p>
     <a href="/list">(list)</a>
-    <a href="/changePw">(password)</a>
+    <a href="/changepw">(password)</a>
     <a href="/save">(save)</a>
     <a href="/logout">(logout)</a>
 </p>

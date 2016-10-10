@@ -1,17 +1,17 @@
 package de.mg.websave.service;
 
 import de.mg.lateo.LateoMain;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import save.service.DataModel;
 import save.service.PasswordModel;
 
+import javax.annotation.PostConstruct;
+
 @Component
 @Scope("session")
 public class WebSession {
 
-    @Autowired
     private LateoMain lateo;
 
     private DataModel dataModel;
@@ -56,5 +56,10 @@ public class WebSession {
 
     public boolean isLoggedOut() {
         return loginPassword == null;
+    }
+
+    @PostConstruct
+    public void init() {
+        lateo = LateoMain.getInstance();
     }
 }

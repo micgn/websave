@@ -9,7 +9,7 @@
 
 <jsp:include page="fragments/menu.jsp"/>
 
-<spring:url value="/changePw" var="userActionUrl"/>
+<spring:url value="/changepw" var="userActionUrl"/>
 
 <form:form action="${userActionUrl}" modelAttribute="changePwForm" method="post">
 	<table>

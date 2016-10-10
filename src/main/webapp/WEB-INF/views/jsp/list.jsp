@@ -7,8 +7,8 @@
 <jsp:include page="fragments/header.jsp" />
 
 <p>
-	<a href="/showAll">(show all)</a>
-	<a href="/changePw">(password)</a>
+	<a href="/showall">(show all)</a>
+	<a href="/changepw">(password)</a>
 	<a href="/save">(save)</a>
 	<a href="/logout">(logout)</a>
 </p>

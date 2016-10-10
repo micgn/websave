@@ -3,6 +3,7 @@ package de.mg.websave.web;
 import de.mg.websave.service.WebSession;
 import de.mg.websave.service.WebsaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class LoginController {
     private WebsaveService service;
 
     @Autowired
-    private WebSession session;
+    private ApplicationContext applicationContext;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -53,6 +54,7 @@ public class LoginController {
     public String login(@ModelAttribute("loginForm") @Validated LoginTO loginTO,
                         BindingResult result) {
 
+        WebSession session = applicationContext.getBean(WebSession.class);
         if (result.hasErrors()) {
             loginTO.setHint(session.getPasswordModel().getHint());
             return "login";
@@ -65,6 +67,7 @@ public class LoginController {
     }
 
     private void loadPasswordModelIntoSession() {
+        WebSession session = applicationContext.getBean(WebSession.class);
         if (session.getPasswordModel() == null) {
             PasswordModel passwordModel = service.getPasswordModel();
             session.setPasswordModel(passwordModel);

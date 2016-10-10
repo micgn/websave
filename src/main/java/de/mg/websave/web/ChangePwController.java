@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -39,7 +40,10 @@ public class ChangePwController {
     }
 
     @RequestMapping(value = "/changepw", method = RequestMethod.POST)
-    public String change(@ModelAttribute("changePwForm") @Validated ChangePwTO c) {
+    public String change(@ModelAttribute("changePwForm") @Validated ChangePwTO c, BindingResult result) {
+        if (result.hasErrors()) {
+            return "changePw";
+        }
         PasswordModel model = session.getPasswordModel();
         model.setNewPassword(c.getNewPw1());
         model.setHint(c.getHint());
