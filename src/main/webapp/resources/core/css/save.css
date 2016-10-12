@@ -56,8 +56,23 @@ input[type=password] {
 
 input[type=submit] {
     background: #98b6de;
+    margin-top: 10px;
 }
 
 .entry {
     color: white;
+}
+
+.logo {
+    width: 300px;
+    margin-top: 50px;
+}
+
+.small {
+    font-size: x-small;
+}
+
+.list {
+    overflow-y: auto;
+    max-height: 600px;
 }

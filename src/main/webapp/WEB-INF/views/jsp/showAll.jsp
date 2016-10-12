@@ -15,4 +15,5 @@
 	<hr>
 </c:forEach>
 
-<jsp:include page="fragments/footer.jsp" />
+</body>
+</html>

@@ -55,6 +55,14 @@
     <dependencies>
 
         <dependency>
+            <!-- artifact contains images with a commercial license -->
+            <groupId>de.mg.imgs</groupId>
+            <artifactId>imgs</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
             <groupId>de.mg.lateo</groupId>
             <artifactId>lateo</artifactId>
             <version>1.0.0-SNAPSHOT</version>

@@ -13,7 +13,7 @@
 	<a href="/logout">(logout)</a>
 </p>
 
-<ul>
+<ul class="list">
 	<c:forEach items="${list.entries}" var="entry">
 		<li>
 			<spring:url value="/show/${entry.name}" var="showActionUrl"/>
