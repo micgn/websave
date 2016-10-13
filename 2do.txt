@@ -1,4 +1,1 @@
-add front picture configurable / not on github!
-copyright header
 set seesion timeout short
-redirect to login in case of session timeout
