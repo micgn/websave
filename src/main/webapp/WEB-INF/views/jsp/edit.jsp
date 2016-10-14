@@ -40,18 +40,29 @@
 		<tr>
 			<td>Entry</td>
 			<td>
-				<form:textarea path="entry" rows="10" cols="50" />
+				<form:textarea path="entry" id="entryText" rows="10" cols="50"/>
 				<form:errors path="entry" cssClass="errors" />
 			</td>
 		</tr>
 	</table>
 
     <p>
-        <input type="submit" value="Change"/>
+		<input id="submitChange" , type="submit" value="Change"/>
         <spring:url value="/delete/${model.name}" var="deleteActionUrl"/>
         <a href="${deleteActionUrl}">(delete)</a>
     </p>
 </form:form>
+
+<script>
+	$(document).ready(function () {
+		$("#submitChange").on("click", function () {
+			var txt = $("#entryText").val();
+			var pw = $("#js_password", parent.document).val();
+			var enc = CryptoJS.AES.encrypt(txt, pw);
+			$("#entryText").val(enc);
+		});
+	});
+</script>
 
 
 <jsp:include page="fragments/footer.jsp" />

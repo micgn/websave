@@ -29,5 +29,14 @@
   <spring:url value="/resources/core/css/save.css" var="saveCss" />
   <link href="${saveCss}" rel="stylesheet" />
 
+  <spring:url value="/resources/core/js/jquery-3.1.1.min.js" var="jquery"/>
+  <script src="${jquery}"></script>
+
+  <spring:url value="/resources/core/js/aes.js" var="crypt1"/>
+  <script src="${crypt1}"></script>
+
+  <spring:url value="/resources/core/js/md5.js" var="crypt2"/>
+  <script src="${crypt2}"></script>
+
 </head>
 <body>

@@ -53,11 +53,6 @@ public class LoginController {
         binder.setValidator(loginValidator);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String root() {
-        return "redirect:/login";
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
 

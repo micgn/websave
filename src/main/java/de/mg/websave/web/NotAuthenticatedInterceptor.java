@@ -36,7 +36,7 @@ public class NotAuthenticatedInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        if (!isLogin(handler)) {
+        if (!isPageOrLogin(handler)) {
             WebSession session = applicationContext.getBean(WebSession.class);
             if (session.isLoggedOut()) {
                 response.sendRedirect("/login");
@@ -46,9 +46,10 @@ public class NotAuthenticatedInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
-    private boolean isLogin(Object handler) {
+    private boolean isPageOrLogin(Object handler) {
         if (handler instanceof HandlerMethod) {
-            return ((HandlerMethod) handler).getBeanType() == LoginController.class;
+            Class<?> beanType = ((HandlerMethod) handler).getBeanType();
+            return beanType == LoginController.class || beanType == PageController.class;
         }
         return false;
     }
