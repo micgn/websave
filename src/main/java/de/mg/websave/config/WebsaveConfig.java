@@ -25,8 +25,8 @@ public class WebsaveConfig {
 
     private String basicAuthPassword = "12345";
     private String port = "8888", securePort = "8443";
-    private String keystorePath = "/home/mgnatz/git/save/keystore.jks", keystoreAlias = "self", keystorePassword = "geheim";
-    private String datafilePath = "/home/mgnatz/git/save";
+    private String keystorePath = "/home/mgnatz/git/websave/keystore.jks", keystoreAlias = "self", keystorePassword = "geheim";
+    private String datafilePath = "/home/mgnatz/git/websave";
 
 
     public WebsaveConfig() {
