@@ -165,7 +165,7 @@ public class WebsaveService {
     @PostConstruct
     public void init() throws Exception {
         xstream = new XStream();
-        lateo = LateoMain.getInstance();
+        lateo = LateoMain.getInstance(true);
         dataPath = new WebsaveConfig().getDatafilePath();
     }
 

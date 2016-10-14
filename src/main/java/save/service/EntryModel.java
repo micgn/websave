@@ -28,6 +28,8 @@ public class EntryModel implements Comparable<EntryModel> {
 
     private String entry;
 
+    private String hash;
+
     public String getName() {
         return name;
     }
@@ -60,4 +62,11 @@ public class EntryModel implements Comparable<EntryModel> {
         return name.toLowerCase().compareTo(m.getName().toLowerCase());
     }
 
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 }

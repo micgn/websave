@@ -19,7 +19,7 @@
 package save.service;
 
 
-import de.mg.websave.util.MD5StringEncrypter;
+import de.mg.websave.util.MD5Util;
 
 public class PasswordModel {
 
@@ -31,12 +31,12 @@ public class PasswordModel {
     private String hint;
 
     public boolean isCorrectPassword(String password) {
-        String testPw = MD5StringEncrypter.encrypt(password);
+        String testPw = MD5Util.hash(password);
         return passwordEncrypted.equals(testPw);
     }
 
     public void setNewPassword(String password) {
-        this.passwordEncrypted = MD5StringEncrypter.encrypt(password);
+        this.passwordEncrypted = MD5Util.hash(password);
     }
 
     public String getPasswordEncrypted() {

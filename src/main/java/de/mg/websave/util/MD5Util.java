@@ -22,12 +22,12 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5StringEncrypter {
+public class MD5Util {
 
     final static String ALGORITHM = "MD5";
     final static String ENCODING = "UTF-8";
 
-    public static String encrypt(String input) {
+    public static String hash(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance(ALGORITHM);
             digest.update(input.getBytes(ENCODING));
