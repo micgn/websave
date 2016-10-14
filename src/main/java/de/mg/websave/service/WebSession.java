@@ -78,6 +78,6 @@ public class WebSession {
 
     @PostConstruct
     public void init() {
-        lateo = LateoMain.getInstance();
+        lateo = LateoMain.getInstance(true);
     }
 }
