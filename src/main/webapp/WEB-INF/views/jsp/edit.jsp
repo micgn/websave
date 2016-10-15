@@ -27,7 +27,7 @@
 
 <jsp:include page="fragments/menu.jsp"/>
 
-<form:form action="/edit" modelAttribute="editForm" method="post">
+<form:form action="/edit" modelAttribute="editForm" method="post" acceptCharset="utf-8">
     <form:hidden path="oldEntryName" value="${oldEntryName}"/>
 	<table>
 		<tr>

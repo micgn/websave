@@ -27,7 +27,7 @@
 
 <spring:url value="/login" var="userActionUrl"/>
 
-<form:form action="${userActionUrl}" modelAttribute="loginForm" method="post">
+<form:form action="${userActionUrl}" modelAttribute="loginForm" method="post" acceptCharset="utf-8">
     <p>
         <form:password path="pw" placeholder="remote password"/><br/>
         <form:errors path="pw" cssClass="errors"/>

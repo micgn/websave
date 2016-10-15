@@ -29,7 +29,7 @@
 
 <spring:url value="/changepw" var="userActionUrl"/>
 
-<form:form action="${userActionUrl}" modelAttribute="changePwForm" method="post">
+<form:form action="${userActionUrl}" modelAttribute="changePwForm" method="post" acceptCharset="utf-8">
 	<table>
 		<tr>
 			<td>old password:</td>
