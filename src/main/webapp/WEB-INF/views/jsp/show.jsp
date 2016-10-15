@@ -30,7 +30,10 @@
 <table>
 	<tr>
 		<td>Entry:</td>
-		<td class="entry"><c:out value="${entryModel.entryHtml}" escapeXml="false"/></td>
+		<td class="entry" id="entryText">
+			<pre><c:out value="${entryModel.entry}" escapeXml="false"/></pre>
+		</td>
+		<div id="hash" style="display: none">${entryModel.hash}</div>
 	</tr>
 </table>
 
@@ -40,6 +43,26 @@
 	<a href="${editActionUrl}">(edit)</a>
 	<a href="${deleteActionUrl}">(delete)</a>
 </p>
+
+<script>
+	$(document).ready(function () {
+
+		var hash = $("#hash").html();
+		var pw = $("#js_password", parent.document).val();
+		if (hash != "" && pw != "") {
+			var txt = $("#entryText").children().first().html();
+			if (hash != CryptoJS.MD5(txt).toString()) {
+				var dec = CryptoJS.AES.decrypt(txt, pw);
+				dec = dec.toString(CryptoJS.enc.Utf8);
+				if (hash == CryptoJS.MD5(dec).toString())
+					$("#entryText").children().first().html(dec);
+				else
+					$("#entryText").html("password WRONG");
+			}
+		}
+
+	});
+</script>
 
 
 <jsp:include page="fragments/footer.jsp" />

@@ -56,6 +56,11 @@ textarea {
     padding: 5px;
 }
 
+pre {
+    font-family: "Tahoma", "Arial";
+    font-size: medium;
+}
+
 input[type=text] {
     font-family: "Tahoma", "Arial";
     background: #181831;
