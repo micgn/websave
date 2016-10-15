@@ -29,7 +29,7 @@
 
 <form:form action="${userActionUrl}" modelAttribute="loginForm" method="post">
     <p>
-        <form:password path="pw"/><br/>
+        <form:password path="pw" placeholder="remote password"/><br/>
         <form:errors path="pw" cssClass="errors"/>
     </p>
     <p>

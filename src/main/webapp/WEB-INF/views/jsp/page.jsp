@@ -26,9 +26,10 @@
 
     <spring:url value="/resources/core/css/page.css" var="pageCss"/>
     <link href="${pageCss}" rel="stylesheet"/>
+
 </head>
 <body>
-<input type="password" id="js_password">
+<input type="password" id="js_password" placeholder="local password">
 <iframe src="/login"></iframe>
 </body>
 </html>
