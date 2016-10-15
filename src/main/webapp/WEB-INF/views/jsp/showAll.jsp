@@ -27,9 +27,7 @@
 <c:forEach items="${model.entries}" var="entry">
 	<p>
 	<h2><c:out value="${entry.name}"/></h2>
-	<div class="entryText">
-		<pre><c:out value="${entry.entryHtml}" escapeXml="false"/></pre>
-	</div>
+	<div class="entryText"><c:out value="${entry.entryHtml}" escapeXml="false"/></div>
 		<hl/>
 	</p>
 	<hr>
@@ -41,9 +39,9 @@
 		var pw = $("#js_password", parent.document).val();
 		if (pw != "") {
 			$(".entryText").each(function (index, value) {
-				var dec = CryptoJS.AES.decrypt(value.firstChild.innerHTML, pw);
+				var dec = CryptoJS.AES.decrypt(value.innerHTML, pw);
 				dec = dec.toString(CryptoJS.enc.Utf8);
-				value.firstChild.innerHTML = dec;
+				value.innerHTML = "<pre>" + dec + "</pre>";
 			});
 		}
 
