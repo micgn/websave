@@ -42,10 +42,11 @@ public class EditValidator implements Validator {
         EditTO to = (EditTO) obj;
         if (isEmpty(to.getEntryName())) {
             errors.rejectValue("entryName", "error.ValueEmpty", null, "Must be filled.");
-            return;
         } else if (!to.getOldEntryName().equals(to.getEntryName())
                 && session.getDataModel().get(to.getEntryName()) != null) {
             errors.rejectValue("entryName", "error.NameExists", null, "Name already exists");
+        } else if (isEmpty(to.getHash())) {
+            errors.rejectValue("entryText", "error", null, "error calculating hash value");
         }
     }
 }

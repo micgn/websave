@@ -62,6 +62,7 @@ public class EditController {
         to.setOldEntryName(entry.getName());
         to.setEntryName(entry.getName());
         to.setEntry(entry.getEntry());
+        to.setHash(entry.getHash());
         model.addAttribute("editForm", to);
 
         return "edit";
@@ -73,6 +74,7 @@ public class EditController {
         EntryModel entry = session.getDataModel().get(to.getOldEntryName());
         entry.setName(to.getEntryName());
         entry.setEntry(to.getEntry());
+        entry.setHash(to.getHash());
         Collections.sort(session.getDataModel().getEntries());
 
         return "redirect:/show/" + to.getEntryName();

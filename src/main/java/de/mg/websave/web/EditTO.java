@@ -23,6 +23,7 @@ public class EditTO {
     private String oldEntryName;
     private String entryName;
     private String entry;
+    private String hash;
 
     public String getOldEntryName() {
         return oldEntryName;
@@ -46,5 +47,13 @@ public class EditTO {
 
     public void setEntry(String entry) {
         this.entry = entry;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 }

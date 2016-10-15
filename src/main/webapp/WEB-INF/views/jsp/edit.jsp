@@ -43,6 +43,7 @@
 				<form:textarea path="entry" id="entryText" rows="10" cols="50"/>
 				<form:errors path="entry" cssClass="errors" />
 			</td>
+			<form:hidden path="hash" id="hash"/>
 		</tr>
 	</table>
 
@@ -55,9 +56,32 @@
 
 <script>
 	$(document).ready(function () {
+
+		var hash = $("#hash").val();
+		var pw = $("#js_password", parent.document).val();
+		if (hash != "" && pw != "") {
+			var txt = $("#entryText").val();
+			if (hash != CryptoJS.MD5(txt).toString()) {
+				var dec = CryptoJS.AES.decrypt(txt, pw);
+				dec = dec.toString(CryptoJS.enc.Utf8);
+				if (hash == CryptoJS.MD5(dec).toString())
+					$("#entryText").val(dec);
+				else
+					$("#entryText").val("password WRONG");
+			}
+		}
+
 		$("#submitChange").on("click", function () {
 			var txt = $("#entryText").val();
+			if (txt == "")
+				return false;
+			var hash = CryptoJS.MD5(txt).toString();
+			$("#hash").val(hash);
 			var pw = $("#js_password", parent.document).val();
+			if (pw == "") {
+				alert("enter password");
+				return false;
+			}
 			var enc = CryptoJS.AES.encrypt(txt, pw);
 			$("#entryText").val(enc);
 		});
