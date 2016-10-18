@@ -30,6 +30,6 @@
 </head>
 <body>
 <input type="password" id="js_password" placeholder="local password">
-<iframe src="/login"></iframe>
+<iframe src="login"></iframe>
 </body>
 </html>

@@ -23,9 +23,7 @@ import java.lang.reflect.Field;
 
 public class WebsaveConfig {
 
-    private String basicAuthPassword = "12345";
-    private String port = "8888", securePort = "8443";
-    private String keystorePath = "/home/mgnatz/git/websave/keystore.jks", keystoreAlias = "self", keystorePassword = "geheim";
+
     private String datafilePath = "/home/mgnatz/git/websave";
 
 
@@ -46,40 +44,10 @@ public class WebsaveConfig {
     @Override
     public String toString() {
         return "WebsaveConfig{" +
-                "basicAuthPassword='" + basicAuthPassword + '\'' +
-                ", port='" + port + '\'' +
-                ", securePort='" + securePort + '\'' +
-                ", keystorePath='" + keystorePath + '\'' +
-                ", keystoreAlias='" + keystoreAlias + '\'' +
-                ", keystorePassword='" + keystorePassword + '\'' +
-                ", datafilePath='" + datafilePath + '\'' +
+                "datafilePath='" + datafilePath + '\'' +
                 '}';
     }
 
-    public String getSecurePort() {
-        return securePort;
-    }
-
-
-    public String getBasicAuthPassword() {
-        return basicAuthPassword;
-    }
-
-    public String getPort() {
-        return port;
-    }
-
-    public String getKeystorePath() {
-        return keystorePath;
-    }
-
-    public String getKeystoreAlias() {
-        return keystoreAlias;
-    }
-
-    public String getKeystorePassword() {
-        return keystorePassword;
-    }
 
     public String getDatafilePath() {
         return datafilePath;

@@ -19,8 +19,12 @@
   --%>
 
 <p>
-    <a href="/list">(list)</a>
-    <a href="/changepw">(password)</a>
-    <a href="/save">(save)</a>
-    <a href="/logout">(logout)</a>
+    <spring:url value="/list" var="list"/>
+    <a href="${list}">(list)</a>
+    <spring:url value="/changepw" var="password"/>
+    <a href="${password}">(password)</a>
+    <spring:url value="/save" var="save"/>
+    <a href="${save}">(save)</a>
+    <spring:url value="/logout" var="logout"/>
+    <a href="${logout}">(logout)</a>
 </p>

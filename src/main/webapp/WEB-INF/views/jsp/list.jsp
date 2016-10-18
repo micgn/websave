@@ -25,10 +25,14 @@
 <jsp:include page="fragments/header.jsp" />
 
 <p>
-	<a href="/showall">(show all)</a>
-	<a href="/changepw">(password)</a>
-	<a href="/save">(save)</a>
-	<a href="/logout">(logout)</a>
+	<spring:url value="/showall" var="showall"/>
+	<a href="${showall}">(show all)</a>
+	<spring:url value="/changepw" var="password"/>
+	<a href="${password}">(password)</a>
+	<spring:url value="/save" var="save"/>
+	<a href="${save}">(save)</a>
+	<spring:url value="/logout" var="logout"/>
+	<a href="${logout}">(logout)</a>
 </p>
 
 <ul class="list">
@@ -46,7 +50,8 @@
 </ul>
 
 <p>
-	<a href="add">(new)</a>
+	<spring:url value="/add" var="add"/>
+	<a href="${add}">(new)</a>
 </p>
 
 <jsp:include page="fragments/footer.jsp" />

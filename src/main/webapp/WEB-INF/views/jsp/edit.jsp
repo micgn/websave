@@ -27,7 +27,8 @@
 
 <jsp:include page="fragments/menu.jsp"/>
 
-<form:form action="/edit" modelAttribute="editForm" method="post" acceptCharset="utf-8">
+<spring:url value="/edit" var="action"/>
+<form:form action="${action}" modelAttribute="editForm" method="post" acceptCharset="utf-8">
     <form:hidden path="oldEntryName" value="${oldEntryName}"/>
 	<table>
 		<tr>
@@ -48,7 +49,7 @@
 	</table>
 
     <p>
-		<input id="submitChange" , type="submit" value="Change"/>
+		<input id="submitChange" type="submit" value="Change"/>
         <spring:url value="/delete/${model.name}" var="deleteActionUrl"/>
         <a href="${deleteActionUrl}">(delete)</a>
     </p>

@@ -17,35 +17,62 @@
   -->
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
+         version="3.0">
 
-	<display-name>Spring3 MVC Application</display-name>
+    <display-name>Spring3 MVC Application</display-name>
 
-	<servlet>
-		<servlet-name>spring-web</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <servlet>
+        <servlet-name>spring-web</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>spring-web</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring-web</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
-	<error-page>
-		<error-code>500</error-code>
-		<location>/WEB-INF/views/jsp/500.jsp</location>
-	</error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/jsp/500.jsp</location>
+    </error-page>
 
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/views/jsp/404.jsp</location>
-	</error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/jsp/404.jsp</location>
+    </error-page>
 
-	<error-page>
-		<location>/WEB-INF/views/jsp/500.jsp</location>
-	</error-page>
+    <error-page>
+        <location>/WEB-INF/views/jsp/500.jsp</location>
+    </error-page>
+
+
+    <!--security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Save</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>save</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>
+                CONFIDENTIAL
+            </transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>save</role-name>
+    </security-role>
+
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>save</realm-name>
+    </login-config-->
+
 
 </web-app>
