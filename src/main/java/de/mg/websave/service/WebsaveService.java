@@ -19,9 +19,9 @@
 package de.mg.websave.service;
 
 import com.thoughtworks.xstream.XStream;
-import de.mg.lateo.LateoMain;
 import de.mg.websave.config.WebsaveConfig;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import save.service.DataModel;
 import save.service.PasswordModel;
@@ -33,7 +33,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,7 +47,9 @@ public class WebsaveService {
     private static final String DATA_FILE = "data";
     private static final String PW_FILE = "pw";
 
-    private LateoMain lateo;
+    @Autowired
+    private EncryptionUtil encryptionUtil;
+
     private XStream xstream;
 
     private String dataPath;
@@ -66,8 +67,8 @@ public class WebsaveService {
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(file);
-            String content = IOUtils.toString(inputStream, Charset.defaultCharset());
-            String decrypted = lateo.decrypt(password, content);
+            String content = IOUtils.toString(inputStream, "UTF-8");
+            String decrypted = encryptionUtil.decrypt(password, content);
             DataModel result = (DataModel) xstream.fromXML(decrypted);
             return result;
 
@@ -110,7 +111,7 @@ public class WebsaveService {
         FileWriter writer = null;
         try {
             String content = xstream.toXML(data);
-            String encrypted = lateo.encrypt(password, content);
+            String encrypted = encryptionUtil.encrypt(password, content);
             writer = new FileWriter(new File(dataPath, DATA_FILE));
             writer.write(encrypted);
 
@@ -165,7 +166,6 @@ public class WebsaveService {
     @PostConstruct
     public void init() throws Exception {
         xstream = new XStream();
-        lateo = LateoMain.getInstance(true);
         dataPath = new WebsaveConfig().getDatafilePath();
     }
 

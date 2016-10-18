@@ -18,19 +18,18 @@
 
 package de.mg.websave.service;
 
-import de.mg.lateo.LateoMain;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import save.service.DataModel;
 import save.service.PasswordModel;
 
-import javax.annotation.PostConstruct;
-
 @Component
 @Scope("session")
 public class WebSession {
 
-    private LateoMain lateo;
+    @Autowired
+    private EncryptionUtil encryptionUtil;
 
     private DataModel dataModel;
     private PasswordModel passwordModel;
@@ -58,12 +57,12 @@ public class WebSession {
 
     // in case of session serialization only an encrypted password is to be contained
     public void setLoginPassword(String loginPassword) {
-        String encrypted = lateo.encrypt(SECRET, loginPassword);
+        String encrypted = encryptionUtil.encrypt(SECRET, loginPassword);
         this.loginPassword = encrypted;
     }
 
     public String getLoginPassword() {
-        return lateo.decrypt(SECRET, loginPassword);
+        return encryptionUtil.decrypt(SECRET, loginPassword);
     }
 
     public void logout() {
@@ -76,8 +75,4 @@ public class WebSession {
         return loginPassword == null;
     }
 
-    @PostConstruct
-    public void init() {
-        lateo = LateoMain.getInstance(true);
-    }
 }
