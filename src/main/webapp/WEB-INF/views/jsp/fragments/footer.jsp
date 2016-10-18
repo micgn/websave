@@ -18,7 +18,7 @@
   ~
   --%>
 
-<spring:url value="/resources/websave.jpg" var="logo"/>
+<spring:url value="/resources/websave-small.jpg" var="logo"/>
 <img src="${logo}" class="logo"/>
 
 <p class="small">

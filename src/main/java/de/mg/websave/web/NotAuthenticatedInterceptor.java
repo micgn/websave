@@ -39,7 +39,7 @@ public class NotAuthenticatedInterceptor extends HandlerInterceptorAdapter {
         if (!isPageOrLogin(handler)) {
             WebSession session = applicationContext.getBean(WebSession.class);
             if (session.isLoggedOut()) {
-                response.sendRedirect("/login");
+                response.sendRedirect(request.getContextPath());
                 return false;
             }
         }
