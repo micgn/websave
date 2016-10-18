@@ -49,7 +49,7 @@
     </error-page>
 
 
-    <!--security-constraint>
+    <security-constraint>
         <web-resource-collection>
             <web-resource-name>Save</web-resource-name>
             <url-pattern>/*</url-pattern>
@@ -72,7 +72,7 @@
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>save</realm-name>
-    </login-config-->
+    </login-config>
 
 
 </web-app>
