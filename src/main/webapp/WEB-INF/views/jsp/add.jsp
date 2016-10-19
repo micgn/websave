@@ -41,12 +41,33 @@
         <tr>
             <td>Entry</td>
             <td>
-                <form:textarea path="entry" rows="10" cols="50"/>
+                <form:textarea path="entry" id="entryText" rows="10" cols="50"/>
                 <form:errors path="entry" cssClass="errors"/>
             </td>
+            <form:hidden path="hash" id="hash"/>
         </tr>
     </table>
-    <input type="submit" value="Add"/>
+    <input id="submitChange" type="submit" value="Add"/>
 </form:form>
+
+<script>
+    $(document).ready(function () {
+
+        $("#submitChange").on("click", function () {
+            var txt = $("#entryText").val();
+            if (txt == "")
+                return false;
+            var hash = CryptoJS.MD5(txt).toString();
+            $("#hash").val(hash);
+            var pw = $("#js_password", parent.document).val();
+            if (pw == "") {
+                alert("enter password");
+                return false;
+            }
+            var enc = CryptoJS.AES.encrypt(txt, pw);
+            $("#entryText").val(enc);
+        });
+    });
+</script>
 
 <jsp:include page="fragments/footer.jsp"/>
