@@ -50,7 +50,7 @@
 
     <p>
 		<input id="submitChange" type="submit" value="Change"/>
-        <spring:url value="/delete/${model.name}" var="deleteActionUrl"/>
+        <spring:url value="/delete/${editForm.oldEntryName}" var="deleteActionUrl"/>
         <a href="${deleteActionUrl}">(delete)</a>
     </p>
 </form:form>
